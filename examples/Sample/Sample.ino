@@ -4,8 +4,8 @@
 
 Enlight enlight;
 
-char ssid[] = "...";
-char pass[] = "...";
+char ssid[] = "Breakout";
+char pass[] = "Breakout";
 
 const IPAddress enlightIp(192,168,1,102);
 const unsigned int enlightPort = 12000;

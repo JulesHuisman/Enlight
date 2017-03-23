@@ -24,8 +24,8 @@ class Enlight
   public:
     Enlight();
     void begin(IPAddress enlightIp, const unsigned int enlightPort);
-    void setColor(int lightId, int color);
-    void setBrightness(int lightId, int brightness);
+    void setColor(int _group, int color);
+    void setBrightness(int _group, int brightness);
   private:
     WiFiUDP Udp;
     IPAddress _enlightIp;
