@@ -56,16 +56,21 @@ void Enlight::setBrightness(int lightId, int brightness)
   this->sendMessage("setDimLevel", lightId, value);
 }
 
-void Enlight::sendMessage(String command, int lightId, int value) {
-    OSCMessage msg("/Enlight/setDimLevel");
-    msg.add(lightId);
-    msg.add(2);
-    msg.add(value);
-    msg.add(113);
-    Udp.beginPacket(_enlightIp, _enlightPort);
-    msg.send(Udp);
-    Udp.endPacket();
-    msg.empty();
+void Enlight::sendMessage(char command[], int lightId, int value) {
+  char commandArray[] = "/Enlight/";
+
+  //Add the specific command to the full command array
+	strcat(commandArray,command);
+
+  OSCMessage msg(commandArray);
+  msg.add(lightId);
+  msg.add(2);
+  msg.add(value);
+  msg.add(113);
+  Udp.beginPacket(_enlightIp, _enlightPort);
+  msg.send(Udp);
+  Udp.endPacket();
+  msg.empty();
 }
 
 void Enlight::connect()

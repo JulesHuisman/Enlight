@@ -1,6 +1,5 @@
 /*
-  Library for controller the milight lights with an esp8266
-  Created by Jules Huisman, March 19, 2017.
+  Created by Jules Huisman, March 22, 2017.
   Released into the public domain.
 */
 
@@ -31,7 +30,7 @@ class Enlight
     WiFiUDP Udp;
     IPAddress _enlightIp;
     void connect();
-    void sendMessage(String command, int lightId, int value);
+    void sendMessage(char command[], int lightId, int value);
     unsigned int _enlightPort;
 };
 
