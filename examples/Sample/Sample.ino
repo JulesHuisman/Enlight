@@ -7,8 +7,8 @@ Enlight enlight;
 char ssid[] = "...";
 char pass[] = "...";
 
-const IPAddress enlightIp(192,168,0,105);
-const unsigned int enlightPort = 9999;
+const IPAddress enlightIp(192,168,1,102);
+const unsigned int enlightPort = 12000;
 
 
 void setup() {
@@ -18,6 +18,6 @@ void setup() {
 }
 
 void loop() {
-  enlight.setColor(0,20);
-  delay(5000);
+  //enlight.setColor(0,20);
+  //enlight.setBrightness(0,20);
 }
