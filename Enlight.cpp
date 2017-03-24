@@ -36,27 +36,27 @@ void Enlight::begin(IPAddress enlightIp, const unsigned int enlightPort)
   this->connect();
 }
 
-void Enlight::setColor(int lightId, int color)
+void Enlight::setColor(int lightId, int color, int fadeTime)
 {
   DEBUG_PRINT(F("Set color: "));
   DEBUG_PRINTLN(color);
 
   int value = map(color,0,100,2200,9000);
 
-  this->sendMessage("setCT", lightId, value);
+  this->sendMessage("setCT", lightId, value, fadeTime);
 }
 
-void Enlight::setBrightness(int lightId, int brightness)
+void Enlight::setBrightness(int lightId, int brightness, int fadeTime)
 {
   DEBUG_PRINT(F("Set brightness: "));
   DEBUG_PRINTLN(brightness);
 
   int value = map(brightness,0,100,0,65535);
 
-  this->sendMessage("setDimLevel", lightId, value);
+  this->sendMessage("setDimLevel", lightId, value, fadeTime);
 }
 
-void Enlight::sendMessage(char command[], int lightId, int value) {
+void Enlight::sendMessage(char command[], int lightId, int value, int fadeTime) {
   char commandArray[] = "/Enlight/";
 
   //Add the specific command to the full command array
@@ -66,7 +66,7 @@ void Enlight::sendMessage(char command[], int lightId, int value) {
   msg.add(lightId);
   msg.add(2);
   msg.add(value);
-  msg.add(113);
+  msg.add(fadeTime);
   Udp.beginPacket(_enlightIp, _enlightPort);
   msg.send(Udp);
   Udp.endPacket();

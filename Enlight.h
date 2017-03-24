@@ -24,13 +24,13 @@ class Enlight
   public:
     Enlight();
     void begin(IPAddress enlightIp, const unsigned int enlightPort);
-    void setColor(int _group, int color);
-    void setBrightness(int _group, int brightness);
+    void setColor(int _group, int color, int fadeTime);
+    void setBrightness(int _group, int brightness, int fadeTime);
   private:
     WiFiUDP Udp;
     IPAddress _enlightIp;
     void connect();
-    void sendMessage(char command[], int lightId, int value);
+    void sendMessage(char command[], int lightId, int value, int fadeTime);
     unsigned int _enlightPort;
 };
 
